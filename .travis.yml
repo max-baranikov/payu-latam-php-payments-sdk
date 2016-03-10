@@ -1,0 +1,7 @@
+language: php
+script: phpunit 
+notifications:
+   email:
+      recipients:
+       - jeanpaul.manjarres@payulatam.com
+      on_success: change

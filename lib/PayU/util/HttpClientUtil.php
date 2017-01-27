@@ -17,6 +17,8 @@ class HttpClientUtil {
 	
 	const ACCEPT_LANGUAGE = 'Accept-Language: ';
 	
+	const CA_CERTIFICATE_NAME_FILE = '/../resources/ca_certificate.pem';
+	
 	/**
 	 * Sends a request type json
 	 * @param Object $request this object is encode to json is used to request data
@@ -40,7 +42,9 @@ class HttpClientUtil {
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
 		curl_setopt($curl, CURLOPT_POST, true);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($curl, CURLOPT_CAINFO, self::getCertificatePath());
 		curl_setopt($curl, CURLOPT_HTTPHEADER,$httpHeader);
 		
 		if(isset($payUHttpRequestInfo->user) && isset ($payUHttpRequestInfo->password)){
@@ -73,5 +77,15 @@ class HttpClientUtil {
 		}
 		
 	}
+	
+	/**
+	 * Returns de ca_certificate path
+	 * @return the cea certificate path
+	 */
+	private static function getCertificatePath()
+	{
+		return dirname(__FILE__) . self::CA_CERTIFICATE_NAME_FILE;
+	}
+	
 	
 }

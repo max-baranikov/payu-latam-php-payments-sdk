@@ -1,0 +1,5 @@
+2017-01-27
+----------
+Se realiza ajuste para validar el certificado de PayU en los ambientes que consuman el SDK
+Issues:
+https://pagosonline.jira.com/secure/RapidBoard.jspa?rapidView=188&selectedIssue=PAGOSONLINEPPS-36550

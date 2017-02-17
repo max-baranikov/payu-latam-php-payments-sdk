@@ -30,10 +30,7 @@ class PayUHttpRequestInfo{
 	
 	/** The production environment prefix URL*/
 	const PAYMENTS_PRD_URL = 'https://api.payulatam.com';
-	
-	/** The STG environment prefix URL*/
-	const PAYMENTS_STG_URL = 'https://stg.api.payulatam.com';
-	
+		
 	/** The STG environment prefix URL*/
 	const PAYMENTS_SANDBOX_URL = 'https://sandbox.api.payulatam';	
 	

@@ -31,7 +31,7 @@ class PayUHttpRequestInfo{
 	/** The production environment prefix URL*/
 	const PAYMENTS_PRD_URL = 'https://api.payulatam.com';
 		
-	/** The STG environment prefix URL*/
+	/** The Sandbox environment prefix URL*/
 	const PAYMENTS_SANDBOX_URL = 'https://sandbox.api.payulatam';	
 	
 	/**
@@ -62,14 +62,11 @@ class PayUHttpRequestInfo{
 	 * Validates if the URL is Production or STG enviroment
 	 * @return true if the URL is Production or STG enviroment, false in other case
 	 */
-	public function isProductionEnviroment(){
+	public function isSslCertificateRequired(){
 		$url = Environment::getApiUrl($this->environment);
-		if( stristr($url, PayUHttpRequestInfo::PAYMENTS_PRD_URL) || 
-			stristr($url, PayUHttpRequestInfo::PAYMENTS_STG_URL) ||
-			stristr($url, PayUHttpRequestInfo::PAYMENTS_SANDBOX_URL)){
-			return true;
-		}	
-		return false;
+		
+		return (stristr($url, PayUHttpRequestInfo::PAYMENTS_PRD_URL) || 
+			stristr($url, PayUHttpRequestInfo::PAYMENTS_SANDBOX_URL));
 	}
 	
 	

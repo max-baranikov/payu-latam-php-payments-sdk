@@ -36,15 +36,20 @@ class HttpClientUtil {
 			array_push($httpHeader,HttpClientUtil::ACCEPT_LANGUAGE . '$payUHttpRequestInfo->lang');
 		}
 		
-		
 		$curl = curl_init($payUHttpRequestInfo->getUrl());
 		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $payUHttpRequestInfo->method);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
 		curl_setopt($curl, CURLOPT_POST, true);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
-		curl_setopt($curl, CURLOPT_CAINFO, self::getCertificatePath());
+		
+		if( $payUHttpRequestInfo->isSslCertificateRequired() ){
+			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+ 			curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+ 			curl_setopt($curl, CURLOPT_CAINFO, self::getCertificatePath());
+ 		}else{
+ 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+ 		}
+		
 		curl_setopt($curl, CURLOPT_HTTPHEADER,$httpHeader);
 		
 		if(isset($payUHttpRequestInfo->user) && isset ($payUHttpRequestInfo->password)){

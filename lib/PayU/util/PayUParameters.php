@@ -71,6 +71,8 @@ class PayUParameters {
 	const PAYER_CONTACT_PHONE = 'payerContactPhone';
 	/** The payer's DNI. */	
 	const PAYER_DNI = 'payerDNI';
+	/** The payer's DNI type. */
+	const PAYER_DNI_TYPE = "payerDNIType";
 	/** The payer's Business Name */
 	const PAYER_BUSINESS_NAME = "payerBusinessName";
 	/** The payer's birth day */

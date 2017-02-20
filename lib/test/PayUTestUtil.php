@@ -212,6 +212,31 @@ class PayUTestUtil{
 		return $parameters;
 	}
 	
+	/**
+	 * Returns a map of parameters to generate a success transaction with Codensa credit card
+	 * @param array $overrideParameters
+	 * @return a array with the parameters built
+	 */
+	public static function buildSuccessParametersCodensaCreditCard($overrideParameters = null){
+	
+		$parametersBasic = PayUTestUtil::buildBasicParameters();
+	
+		$parametersCreditCard = array(
+				PayUParameters::CREDIT_CARD_NUMBER => '4024007137771894',
+				PayUParameters::CREDIT_CARD_SECURITY_CODE => '495',
+				PayUParameters::CREDIT_CARD_EXPIRATION_DATE => '2020/01',
+				PayUParameters::PAYMENT_METHOD => PaymentMethods::CODENSA,
+		);
+	
+		$parameters = array_merge($parametersBasic,$parametersCreditCard);
+	
+		if(isset($overrideParameters)){
+			$parameters = array_replace($parameters,$overrideParameters);
+		}
+	
+		return $parameters;
+	}
+	
 	public static function buildSuccessParametersCreditCardBrasil($overrideParameters = null){
 	
 		$parametersBasic = PayUTestUtil::buildBasicParametersBrasil();

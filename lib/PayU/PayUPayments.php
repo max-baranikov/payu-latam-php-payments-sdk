@@ -10,6 +10,8 @@
  */
 class PayUPayments{
 	
+	/** Constant to CODENSA Payment method */
+	const PAYMENT_METHOD_CODENSA = 'CODENSA';
 	
 	/**
 	 * Makes a ping request
@@ -136,8 +138,13 @@ class PayUPayments{
 					$requiredCreditCard[] = PayUParameters::CREDIT_CARD_SECURITY_CODE;
 				}
 				
+				if(PayUPayments::PAYMENT_METHOD_CODENSA == $paymentMethodParameter){
+					$requiredCreditCard[] = PayUParameters::PAYER_DNI;
+					$requiredCreditCard[] = PayUParameters::PAYER_DNI_TYPE;
+				}			
+				
 				$required = array_merge($requiredAll, $requiredCreditCard);
-					
+									
 			}else if($paymentMethod != null && (PayUPaymentMethodType::CASH == $paymentMethod->type )){
 				$requiredCash = array(
 						PayUParameters::PAYER_NAME,

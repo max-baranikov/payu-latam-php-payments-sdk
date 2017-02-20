@@ -1759,6 +1759,86 @@ class PayUPaymentsTest extends PHPUnit_Framework_TestCase
     	//If it breaks. verify that the account is not enabled for online cancellations.
     	$this->assertEquals(PayUTransactionResponseCode::PENDING_CANCELATION_REVIEW, $refoundResponse->transactionResponse->state);
     }
+    
+    /**
+     * Test authorization and capture with with Codensa payment method and without DNI Type
+     * @author angela.aguirre@payulatam.com
+     * @version 4.9.23
+     */
+    public function testDoAuthorizationAndCaptureWithCodensaPaymentMethodWithoutDNIType(){
+    	$this->setExpectedException("InvalidArgumentException","Parameter [payerDNIType] is required.");
+    	PayU::$apiLogin = PayUTestUtil::API_LOGIN;
+    	PayU::$apiKey = PayUTestUtil::API_KEY;
+    	PayU::$merchantId = PayUTestUtil::MERCHANT_ID;
+    	Environment::setPaymentsCustomUrl(PayUTestUtil::PAYMENTS_CUSTOM_URL);
+    
+    	$parametersBasic = PayUTestUtil::buildSuccessParametersCodensaCreditCard();
+    
+    	$parametersBuyer = array(
+    			PayUParameters::BUYER_NAME => 'Buyer Full Name',
+    			PayUParameters::BUYER_DNI => '137946852',
+    			PayUParameters::BUYER_STREET => 'Street Line 1',
+    			PayUParameters::BUYER_STREET_2 => 'Suite 320',
+    			PayUParameters::BUYER_STREET_3 => 'Private',
+    			PayUParameters::BUYER_CITY => 'Bogota',
+    			PayUParameters::BUYER_STATE => 'BG',
+    			PayUParameters::BUYER_COUNTRY => 'CO',
+    			PayUParameters::PAYMENT_METHOD => PaymentMethods::CODENSA,
+    	);
+    
+    	$parametersPayer = array(
+    			PayUParameters::PAYER_NAME => 'Buyer Full Name',
+    			PayUParameters::PAYER_EMAIL => 'email@email.com',
+    			PayUParameters::PAYER_CONTACT_PHONE => '12345678',
+    			PayUParameters::PAYER_DNI => '123456'
+    	);
+    
+    	$parameters = array_merge($parametersBasic,$parametersBuyer);
+    	$parameters = array_merge($parametersBasic,$parametersPayer);
+    
+    	PayUPayments::doAuthorizationAndCapture($parameters, SupportedLanguages::ES);
+    
+    }
+    
+    /**
+     * Test authorization and capture with with Codensa payment method  and without DNI
+     * @author angela.aguirre@payulatam.com
+     * @version 4.9.23
+     */
+    public function testDoAuthorizationAndCaptureWithCodensaPaymentMethodWithoutDNI(){
+    	$this->setExpectedException("InvalidArgumentException","Parameter [payerDNI] is required.");
+    	PayU::$apiLogin = PayUTestUtil::API_LOGIN;
+    	PayU::$apiKey = PayUTestUtil::API_KEY;
+    	PayU::$merchantId = PayUTestUtil::MERCHANT_ID;
+    	Environment::setPaymentsCustomUrl(PayUTestUtil::PAYMENTS_CUSTOM_URL);
+    
+    	$parametersBasic = PayUTestUtil::buildSuccessParametersCodensaCreditCard();
+    
+    	$parametersBuyer = array(
+    			PayUParameters::BUYER_NAME => 'Buyer Full Name',
+    			PayUParameters::BUYER_DNI => '137946852',
+    			PayUParameters::BUYER_STREET => 'Street Line 1',
+    			PayUParameters::BUYER_STREET_2 => 'Suite 320',
+    			PayUParameters::BUYER_STREET_3 => 'Private',
+    			PayUParameters::BUYER_CITY => 'Bogota',
+    			PayUParameters::BUYER_STATE => 'BG',
+    			PayUParameters::BUYER_COUNTRY => 'CO',
+    			PayUParameters::PAYMENT_METHOD => PaymentMethods::CODENSA,
+    	);
+    
+    	$parametersPayer = array(
+    			PayUParameters::PAYER_NAME => 'Buyer Full Name',
+    			PayUParameters::PAYER_EMAIL => 'email@email.com',
+    			PayUParameters::PAYER_CONTACT_PHONE => '12345678',
+    			PayUParameters::PAYER_DNI_TYPE => 'CC'
+    	);
+    	 
+    	$parameters = array_merge($parametersBasic,$parametersBuyer);
+    	$parameters = array_merge($parametersBasic,$parametersPayer);
+    
+    	PayUPayments::doAuthorizationAndCapture($parameters, SupportedLanguages::ES);
+    
+    }
 }
 
 

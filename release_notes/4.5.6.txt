@@ -5,3 +5,8 @@ URL de página de respuesta
 
 Issues:
 https://pagosonline.jira.com/browse/PAGOSONLINEPPS-14322
+
+2017-02-20
+----------
+Se realiza ajuste para validar, como requeridos, los campos de DNI y DNI_TYPE para el medio de pago Codensa.
+Issues: https://pagosonline.jira.com/browse/PAGOSONLINEPPS-37468

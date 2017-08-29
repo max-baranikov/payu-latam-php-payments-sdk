@@ -50,6 +50,8 @@ class PayUParameters {
 
 	/** The number of installments on the purchase. */
 	const INSTALLMENTS_NUMBER = 'installmentsNumber';
+	/** The constant promotion id **/       
+	const PROMOTION_ID = 'promotionId';
 	/** The number on the credit card. */
 	const CREDIT_CARD_NUMBER = 'creditCardNumber';
 	/** The credit card's expiration date. */

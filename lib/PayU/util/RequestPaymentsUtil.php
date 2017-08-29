@@ -210,6 +210,12 @@ class RequestPaymentsUtil extends CommonRequestUtil{
 						CommonRequestUtil::getParameter($parameters, PayUParameters::INSTALLMENTS_NUMBER));
 			}
 				
+                        if( CommonRequestUtil::getParameter($parameters, PayUParameters::PROMOTION_ID) != null) {
+                            $transaction = RequestPaymentsUtil::addExtraParameter($transaction,
+                                    PayUKeyMapName::TRANSACTION_PROMOTION_ID,
+                                    CommonRequestUtil::getParameter($parameters, PayUParameters::PROMOTION_ID));
+                        }
+
 			if( CommonRequestUtil::getParameter($parameters, PayUParameters::RESPONSE_URL) != null) {
 				$transaction = RequestPaymentsUtil::addExtraParameter($transaction,
 						PayUKeyMapName::RESPONSE_URL,

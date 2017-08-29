@@ -22,6 +22,9 @@ class PayUKeyMapName{
 	/** property name to the the transaction  installments number */
 	const TRANSACTION_INSTALLMENTS_NUMBER = "INSTALLMENTS_NUMBER";
 	
+	/** promotion id property name **/
+	const TRANSACTION_PROMOTION_ID = 'PROMOTION_ID';
+	
 	/** property name to the order id to api request */
 	const ORDER_ID = PayUParameters::ORDER_ID;
 	

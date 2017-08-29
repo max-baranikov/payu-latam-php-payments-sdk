@@ -9,3 +9,10 @@ https://pagosonline.jira.com/secure/RapidBoard.jspa?rapidView=188&selectedIssue=
 ----------
 Se realiza ajuste para validar, como requeridos, los campos de DNI y DNI_TYPE para el medio de pago Codensa.
 Issues: https://pagosonline.jira.com/browse/PAGOSONLINEPPS-37468
+
+2017-08-29
+----------
+* PFM-336 Ajustar payu-latam-php-payments-sdk para enviar tag de promociones
+
+Issue:
+https://pagosonline.jira.com/browse/PFM-336

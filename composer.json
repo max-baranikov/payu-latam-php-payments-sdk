@@ -8,5 +8,10 @@
             "email": "emiliano.rodriguez26@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "files": [
+            "lib/PayU.php"
+        ]
+    }
 }

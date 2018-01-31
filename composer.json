@@ -1,10 +1,11 @@
 {
-    "name": "developers-payu-latam/payu-latam-php-payments-sdk",
+    "name": "emirodriguez/payu-latam-php-payments-sdk",
     "description": "PayU Latam PHP SDK for the Payments API",
     "type": "library",
     "authors": [
         {
-            "name": "PayU Latam"
+            "name": "Emi Rodriguez",
+            "email": "emiliano.rodriguez26@gmail.com"
         }
     ],
     "require": {},
